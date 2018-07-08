@@ -15,6 +15,7 @@ const server = http.createServer( function(response, res){
   }
   else if (page == '/css/style.css'){
     fs.readFile('css/style.css', function(err, data){
+      res.writeHead(200, {'Content-Type': 'text/css'});
       res.write(data);
       res.end();
     });
@@ -22,6 +23,15 @@ const server = http.createServer( function(response, res){
   else if(page == '/js/main.js'){
     fs.readFile('js/main.js', function(err, data){
       res.writeHead(200, {'Content-Type': 'text/javascript'});
+      res.write(data);
+      res.end();
+    });
+  }
+  else if(page == '/assets/bgpalin.png'){
+    fs.readFile('assets/bgpalin.png', function(err, data){
+      console.log('err', err)
+      console.log(data)
+      res.writeHead(200, {'Content-Type': 'image/png'});
       res.write(data);
       res.end();
     });
